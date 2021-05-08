@@ -96,8 +96,8 @@ def eval_solution(CNF, solution):
 if __name__ == "__main__":
     start = time.time()
     CNF, V, C = open_CNF(sys.argv[1])
-    solution = q_solve(CNF, V, C, 1)
-
+    S = 1 if len(sys.argv) < 3 else int(sys.argv[2])
+    solution = q_solve(CNF, V, C, S)
     print("c <<PYQSAT>>")
     print("c Filename:",sys.argv[1],"clauses:",C,"variables:",V)
     print("c")
@@ -109,6 +109,5 @@ if __name__ == "__main__":
         print("0")
     else:
         print("s UNDETERMINED")
-        print("c PROBABLY UNSATISFIABLE")
     print("c")
     print("c Time elapsed:", "{:5.2f}".format(time.time()-start), "s")
